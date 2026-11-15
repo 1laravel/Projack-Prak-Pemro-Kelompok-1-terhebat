@@ -1,0 +1,13 @@
+# Praktikum-Pemrograman-Kelompok-1
+
+Anggota kelompok:
+1. Muhammad Aufa Zaki - 260810701100046
+2. Niswatul Afifah Kluet
+3. Faiza Muzkia
+4. Diah Aliefa
+
+# Summary program
+// To be add
+
+# How to compile
+// To be add
