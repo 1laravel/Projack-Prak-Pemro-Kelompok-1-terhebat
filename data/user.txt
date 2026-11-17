@@ -1,0 +1,4 @@
+admin|admin|admin
+diah|diah123|member
+faiza|faiza123|member
+jack|jackbaikhati|member
