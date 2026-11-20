@@ -2,7 +2,7 @@
 
 Anggota kelompok:
 1. Muhammad Aufa Zaki - 260810701100046
-2. Niswatul Afifah Kluet
+2. Niswatul Afifah Kluet - 260810701100004
 3. Faiza Muzkia - 260810701100010
 4. Diah Aliefa - 260810701100011
 
