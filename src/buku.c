@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "buku.h"
 
 void katalog_init(Katalog *k) {
@@ -107,4 +108,33 @@ void buku_tampil_tersedia(const Katalog *k) {
         printf("Tidak ada buku yang tersedia.\n");
     else
         printf("Total: %d buku tersedia\n", no);
+}
+
+static void ke_huruf_kecil(char *s) {
+    for (; *s; s++)
+        *s = (char)tolower((unsigned char)*s);
+}
+
+void buku_cari_by_judul(const Katalog *k, const char *keyword) {
+    char kw[256], judul[256];
+    int ketemu = 0;
+
+    strncpy(kw, keyword, sizeof(kw) - 1);
+    kw[sizeof(kw) - 1] = '\0';
+    ke_huruf_kecil(kw);
+
+    for (int i = 0; i < k->jumlah; i++) {
+        strncpy(judul, k->data[i].title, sizeof(judul) - 1);
+        judul[sizeof(judul) - 1] = '\0';
+        ke_huruf_kecil(judul);
+
+        if (strstr(judul, kw) != NULL) {
+            if (ketemu == 0)
+                cetak_header();
+            ketemu++;
+            cetak_baris(ketemu, &k->data[i]);
+        }
+    }
+    if (ketemu == 0)
+        printf("Buku dengan judul \"%s\" tidak ditemukan.\n", keyword);
 }
