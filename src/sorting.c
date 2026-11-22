@@ -87,7 +87,7 @@ void urutkan_katalog(Katalog *k, AlgoSort algo, KeySort key, Urutan u) {
     switch (algo) {
         case SORT_INSERTION: insertion_sort(k->data, k->jumlah, key, u); break;
         case SORT_SELECTION: selection_sort(k->data, k->jumlah, key, u); break;
-        case SORT_BUBBLE:    bubble_sort(k->data, k->jumlah, key, u); break;
+        case SORT_BUBBLE:    bubble_sort(k->data, k->jumlah, key, u);    break;
         default: break;
     }
 }
