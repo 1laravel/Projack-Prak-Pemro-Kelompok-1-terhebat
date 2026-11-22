@@ -55,3 +55,15 @@ int buku_hapus(Katalog *k, const char *ocaid) {
     k->jumlah--;
     return 1;
 }
+
+int buku_update(Katalog *k, const char *ocaid, Buku baru) {
+    int idx = buku_cari_index_by_id(k, ocaid);
+    if (idx == -1)
+        return 0;
+    if (baru.year <= 0 || baru.page_count <= 0 || baru.stok < 0)
+        return 0;
+
+    strcpy(baru.ocaid, k->data[idx].ocaid);   /* ID tidak boleh berubah */
+    k->data[idx] = baru;
+    return 1;
+}
