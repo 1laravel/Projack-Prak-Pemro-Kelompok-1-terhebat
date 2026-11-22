@@ -90,6 +90,7 @@ void urutkan_katalog(Katalog *k, AlgoSort algo, KeySort key, Urutan u) {
         case SORT_BUBBLE:    bubble_sort(k->data, k->jumlah, key, u); break;
         default: break;
     }
+}
     void katalog_tampil_terurut(const Katalog *k, AlgoSort algo,
                             KeySort key, Urutan u, int hanya_tersedia) {
     if (k->jumlah == 0) {
@@ -118,6 +119,4 @@ void urutkan_katalog(Katalog *k, AlgoSort algo, KeySort key, Urutan u) {
 
     printf("Waktu pengurutan: %.4f detik\n", detik);
     katalog_free(&salinan);
-}
-
 }
