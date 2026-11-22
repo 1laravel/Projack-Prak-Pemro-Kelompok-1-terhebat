@@ -67,3 +67,44 @@ int buku_update(Katalog *k, const char *ocaid, Buku baru) {
     k->data[idx] = baru;
     return 1;
 }
+
+static void cetak_header(void) {
+    printf("%-4s %-22s %-34s %-22s %-6s %-6s %-5s\n",
+           "No", "ID (ocaid)", "Judul", "Pengarang",
+           "Tahun", "Hal", "Stok");
+    printf("--------------------------------------------------------------"
+           "-----------------------------------\n");
+}
+
+static void cetak_baris(int no, const Buku *b) {
+    printf("%-4d %-22.22s %-34.34s %-22.22s %-6d %-6d %-5d\n",
+           no, b->ocaid, b->title, b->author,
+           b->year, b->page_count, b->stok);
+}
+
+void buku_tampil_semua(const Katalog *k) {
+    if (k->jumlah == 0) {
+        printf("Katalog kosong.\n");
+        return;
+    }
+    cetak_header();
+    for (int i = 0; i < k->jumlah; i++)
+        cetak_baris(i + 1, &k->data[i]);
+    printf("Total: %d buku\n", k->jumlah);
+}
+
+void buku_tampil_tersedia(const Katalog *k) {
+    int no = 0;
+    for (int i = 0; i < k->jumlah; i++) {
+        if (k->data[i].stok > 0) {
+            if (no == 0)
+                cetak_header();
+            no++;
+            cetak_baris(no, &k->data[i]);
+        }
+    }
+    if (no == 0)
+        printf("Tidak ada buku yang tersedia.\n");
+    else
+        printf("Total: %d buku tersedia\n", no);
+}
