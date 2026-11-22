@@ -43,3 +43,15 @@ int buku_tambah(Katalog *k, Buku b) {
     k->jumlah++;
     return 1;
 }
+
+int buku_hapus(Katalog *k, const char *ocaid) {
+    int idx = buku_cari_index_by_id(k, ocaid);
+    if (idx == -1)
+        return 0;
+
+    for (int i = idx; i < k->jumlah - 1; i++)
+        k->data[i] = k->data[i + 1];
+
+    k->jumlah--;
+    return 1;
+}
