@@ -1,4 +1,7 @@
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <ctype.h>
 #include "sorting.h"
 
@@ -87,4 +90,34 @@ void urutkan_katalog(Katalog *k, AlgoSort algo, KeySort key, Urutan u) {
         case SORT_BUBBLE:    bubble_sort(k->data, k->jumlah, key, u); break;
         default: break;
     }
+    void katalog_tampil_terurut(const Katalog *k, AlgoSort algo,
+                            KeySort key, Urutan u, int hanya_tersedia) {
+    if (k->jumlah == 0) {
+        printf("Katalog kosong.\n");
+        return;
+    }
+
+    Katalog salinan;
+    salinan.data = malloc(k->jumlah * sizeof(Buku));
+    if (salinan.data == NULL) {
+        printf("Memori tidak cukup.\n");
+        return;
+    }
+    memcpy(salinan.data, k->data, k->jumlah * sizeof(Buku));
+    salinan.jumlah = k->jumlah;
+    salinan.kapasitas = k->jumlah;
+
+    clock_t mulai = clock();
+    urutkan_katalog(&salinan, algo, key, u);
+    double detik = (double)(clock() - mulai) / CLOCKS_PER_SEC;
+
+    if (hanya_tersedia)
+        buku_tampil_tersedia(&salinan);
+    else
+        buku_tampil_semua(&salinan);
+
+    printf("Waktu pengurutan: %.4f detik\n", detik);
+    katalog_free(&salinan);
+}
+
 }
