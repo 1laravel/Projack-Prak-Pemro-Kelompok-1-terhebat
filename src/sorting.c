@@ -46,10 +46,27 @@ static void insertion_sort(Buku *a, int n, KeySort key, Urutan u) {
     }
 }
 
+/* ---------- Selection Sort ---------- */
+static void selection_sort(Buku *a, int n, KeySort key, Urutan u) {
+    for (int i = 0; i < n - 1; i++) {
+        int pilih = i;
+        for (int j = i + 1; j < n; j++) {
+            if (perlu_tukar(&a[pilih], &a[j], key, u))
+                pilih = j;
+        }
+        if (pilih != i) {
+            Buku tmp = a[i];
+            a[i] = a[pilih];
+            a[pilih] = tmp;
+        }
+    }
+}
+
 /* ---------- Fungsi publik ---------- */
 void urutkan_katalog(Katalog *k, AlgoSort algo, KeySort key, Urutan u) {
     switch (algo) {
         case SORT_INSERTION: insertion_sort(k->data, k->jumlah, key, u); break;
+        case SORT_SELECTION: selection_sort(k->data, k->jumlah, key, u); break;
         default: break;
     }
 }
