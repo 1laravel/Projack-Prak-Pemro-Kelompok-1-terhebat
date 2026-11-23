@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "storage.h"
-#include <stdio.h>
-#include <string.h>
-#include "../include/storage.h"
 
 int load_users(const char *filename, User list_user[], int max_data) {
     FILE *file = fopen(filename, "r");
