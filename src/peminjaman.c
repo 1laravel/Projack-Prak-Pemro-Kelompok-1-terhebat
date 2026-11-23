@@ -68,6 +68,20 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
 
     if (posisi_pinjam == -1) {
         printf("Data peminjaman tidak ditemukan atau buku sudah dikembalikan.\n");
-        return;
+    return;    
     }
     }
+        strcpy(list_pinjam[posisi_pinjam].status, "KEMBALI");
+
+    for (int i = 0; i < jumlah_buku; i++) {
+        if (strcmp(list_buku[i].ocaid, list_pinjam[posisi_pinjam].ocaid) == 0) {
+            list_buku[i].stok = list_buku[i].stok + 1;
+            break;
+        }
+    }
+
+    save_books("data/books.txt", list_buku, jumlah_buku);
+    save_peminjaman("data/peminjaman.txt", list_pinjam, jumlah_pinjam);
+
+    printf("Buku berhasil dikembalikan. Terima kasih!\n");
+}
