@@ -8,7 +8,7 @@ typedef struct {
     char username[32];
     char ocaid[64];
     char tanggal_pinjam[20]; 
-    char status[20];        
+    char status;        
 } Peminjaman;
 
 void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, struct Buku list_buku[], int jumlah_buku, const char *username);
