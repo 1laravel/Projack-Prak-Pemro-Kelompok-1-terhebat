@@ -112,3 +112,21 @@ int load_peminjaman(const char *filename, Peminjaman list_pinjam[], int max_data
     fclose(file);
     return i;
 }
+void save_peminjaman(const char *filename, const Peminjaman list_pinjam[], int jumlah_pinjam) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Gagal membuka file %s\n", filename);
+        return;
+    }
+
+    for (int i = 0; i < jumlah_pinjam; i++) {
+        fprintf(file, "%u %s %s %s %s\n",
+                list_pinjam[i].id_peminjaman,
+                list_pinjam[i].username,
+                list_pinjam[i].ocaid,
+                list_pinjam[i].tanggal_pinjam,
+                list_pinjam[i].status);
+    }
+
+    fclose(file);
+}
