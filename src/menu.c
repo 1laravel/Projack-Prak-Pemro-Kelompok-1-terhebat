@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "menu.h"
-#include "auth.h"
-#include "buku.h"
-#include "sorting.h"
-#include "peminjaman.h"
-#include "storage.h"
-#include "utils.h"
+#include "../include/menu.h"
+#include "../include/auth.h"
+#include "../include/buku.h"
+#include "../include/sorting.h"
+#include "../include/peminjaman.h"
+#include "../include/storage.h"
+#include "../include/utils.h"
 
 
 static Katalog    katalog;

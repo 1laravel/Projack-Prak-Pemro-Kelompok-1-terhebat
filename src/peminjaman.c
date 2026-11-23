@@ -16,13 +16,14 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
             posisi_buku = i;
             break;
         }
-            if (posisi_buku == -1) {
+    }
+    if (posisi_buku == -1) {
         printf("Buku dengan ID '%s' tidak ditemukan!\n", cari_ocaid);
         return;
     }
 
     if (list_buku[posisi_buku].stok <= 0) {
-        printf("Maaf, stok buku '%s' habis.\n", list_buku[posisi_buku].judul);
+        printf("Maaf, stok buku '%s' habis.\n", list_buku[posisi_buku].title);
         return;
     }
 
@@ -48,9 +49,9 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
     save_peminjaman("data/peminjaman.txt", list_pinjam, *jumlah_pinjam);
 
     printf("Berhasil meminjam buku '%s'! ID Peminjaman Anda: %u\n",
-           list_buku[posisi_buku].judul,
-           list_pinjam[index_baru].id_peminjaman);
-}
+           list_buku[posisi_buku].title,
+           list_pinjam[index_baru].id_peminjaman); }
+
 void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username) {
     unsigned int cari_id;
     printf("Masukkan ID Peminjaman yang akan dikembalikan: ");
@@ -69,7 +70,6 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
     if (posisi_pinjam == -1) {
         printf("Data peminjaman tidak ditemukan atau buku sudah dikembalikan.\n");
     return;    
-    }
     }
         strcpy(list_pinjam[posisi_pinjam].status, "KEMBALI");
 
