@@ -5,4 +5,6 @@
 
 void logActivity(const char *username, const char *action, const char *detail);
 
+void clearScreen(void);
+
 #endif

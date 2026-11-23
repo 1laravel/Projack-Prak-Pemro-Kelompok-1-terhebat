@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "utils.h"
+#include <stdlib.h>
+#include "../include/utils.h"
 
 void logActivity(const char *username, const char *action, const char *detail) {
     if (username == NULL || action == NULL || detail == NULL) {
@@ -15,4 +16,12 @@ void logActivity(const char *username, const char *action, const char *detail) {
 
     fprintf(logFile, "%s | %s | %s\n", username, action, detail);
     fclose(logFile);
+}
+
+void clearScreen(void) {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
