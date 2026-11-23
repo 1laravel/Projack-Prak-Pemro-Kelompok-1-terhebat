@@ -51,7 +51,7 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
            list_buku[posisi_buku].judul,
            list_pinjam[index_baru].id_peminjaman);
 }
-void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username) {
+void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username); {
     unsigned int cari_id;
     printf("Masukkan ID Peminjaman yang akan dikembalikan: ");
     scanf("%u", &cari_id);
@@ -70,7 +70,7 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
         printf("Data peminjaman tidak ditemukan atau buku sudah dikembalikan.\n");
     return;    
     }
-    }
+    
         strcpy(list_pinjam[posisi_pinjam].status, "KEMBALI");
 
     for (int i = 0; i < jumlah_buku; i++) {
@@ -85,7 +85,7 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
 
     printf("Buku berhasil dikembalikan. Terima kasih!\n");
 }
-void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam, const char *username) {
+void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam, const char *username); {
     printf("\n=== DAFTAR PEMINJAMAN ANDA (%s) ===\n", username);
     int ada = 0;
 
@@ -104,7 +104,7 @@ void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam,
         printf("Anda belum memiliki riwayat peminjaman.\n");
     }
 }
-void laporan_transaksi_global(const Peminjaman list_pinjam[], int jumlah_pinjam) {
+void laporan_transaksi_global(const Peminjaman list_pinjam[], int jumlah_pinjam); {
     printf("\n=== LAPORAN TRANSAKSI PEMINJAMAN ===\n");
     if (jumlah_pinjam == 0) {
         printf("Belum ada transaksi peminjaman.\n");
