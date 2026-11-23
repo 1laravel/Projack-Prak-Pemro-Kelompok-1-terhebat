@@ -1,0 +1,7 @@
+admin | LOGIN | Berhasil masuk ke sistem
+jack | LOGIN | Berhasil masuk ke sistem
+UNKNOWN | LOGIN_FAILED | Percobaan login gagal atau dibatalkan
+admin | LOGIN | Berhasil masuk ke sistem
+admin | LOGIN | Berhasil masuk ke sistem
+admin | LOGIN | Berhasil masuk ke sistem
+admin | LOGIN | Berhasil masuk ke sistem
