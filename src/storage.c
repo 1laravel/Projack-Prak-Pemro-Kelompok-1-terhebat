@@ -89,3 +89,26 @@ void save_books(const char *filename, const Buku list_buku[], int jumlah_buku) {
 
     fclose(file);
 }
+int load_peminjaman(const char *filename, Peminjaman list_pinjam[], int max_data) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        return 0;
+    }
+
+    int i = 0;
+    while (i < max_data) {
+        int hasil = fscanf(file, "%u %31s %63s %19s %19s",
+                           &list_pinjam[i].id_peminjaman,
+                           list_pinjam[i].username,
+                           list_pinjam[i].ocaid,
+                           list_pinjam[i].tanggal_pinjam,
+                           list_pinjam[i].status);
+        if (hasil != 5) {
+            break;
+        }
+        i++;
+    }
+
+    fclose(file);
+    return i;
+}
