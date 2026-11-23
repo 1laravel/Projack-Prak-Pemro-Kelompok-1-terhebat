@@ -26,3 +26,19 @@ int load_users(const char *filename, User list_user[], int max_data) {
     fclose(file);
     return i;
 }
+void save_users(const char *filename, const User list_user[], int jumlah_user) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Gagal membuka file %s\n", filename);
+        return;
+    }
+
+    for (int i = 0; i < jumlah_user; i++) {
+        fprintf(file, "%s %s %s\n",
+                list_user[i].username,
+                list_user[i].password,
+                list_user[i].role);
+    }
+
+    fclose(file);
+}
