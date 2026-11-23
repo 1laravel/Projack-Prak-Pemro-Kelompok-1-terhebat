@@ -69,3 +69,23 @@ int load_books(const char *filename, Buku list_buku[], int max_data) {
     fclose(file);
     return i;
 }
+void save_books(const char *filename, const Buku list_buku[], int jumlah_buku) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Gagal membuka file %s\n", filename);
+        return;
+    }
+
+    for (int i = 0; i < jumlah_buku; i++) {
+        fprintf(file, "%s \"%s\" \"%s\" \"%s\" %d %d %d\n",
+                list_buku[i].ocaid,
+                list_buku[i].judul,
+                list_buku[i].penulis,
+                list_buku[i].penerbit,
+                list_buku[i].tahun,
+                list_buku[i].page_count,
+                list_buku[i].stok);
+    }
+
+    fclose(file);
+}
