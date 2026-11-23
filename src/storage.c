@@ -42,3 +42,30 @@ void save_users(const char *filename, const User list_user[], int jumlah_user) {
 
     fclose(file);
 }
+int load_books(const char *filename, Buku list_buku[], int max_data) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        return 0;
+    }
+
+    int i = 0;
+    while (i < max_data) {
+        int hasil = fscanf(file, "%63s \"%127[^\"]\" \"%127[^\"]\" \"%127[^\"]\" %d %d %d",
+                           list_buku[i].ocaid,
+                           list_buku[i].judul,
+                           list_buku[i].penulis,
+                           list_buku[i].penerbit,
+                           &list_buku[i].tahun,
+                           &list_buku[i].page_count,
+                           &list_buku[i].stok);
+        if (hasil != 7) {
+            break;
+        }
+        if (list_buku[i].stok >= 0 && list_buku[i].page_count > 0) {
+            i++;
+        }
+    }
+
+    fclose(file);
+    return i;
+}
