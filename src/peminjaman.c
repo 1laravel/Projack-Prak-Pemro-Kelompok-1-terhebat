@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "../include/peminjaman.h"
-#include "../include/storage.h"
+#include "peminjaman.h"
+#include "storage.h"
 
 void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username) {
     char cari_ocaid[64];
@@ -16,4 +16,39 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
             posisi_buku = i;
             break;
         }
+            if (posisi_buku == -1) {
+        printf("Buku dengan ID '%s' tidak ditemukan!\n", cari_ocaid);
+        return;
+    }
+
+    if (list_buku[posisi_buku].stok <= 0) {
+        printf("Maaf, stok buku '%s' habis.\n", list_buku[posisi_buku].judul);
+        return;
+    }
+
+    printf("Masukkan Tanggal Pinjam (DD-MM-YYYY): ");
+    scanf("%19s", tanggal);
+
+    int index_baru = *jumlah_pinjam;
+    if (index_baru == 0) {
+        list_pinjam[index_baru].id_peminjaman = 1;
+    } else {
+        list_pinjam[index_baru].id_peminjaman = list_pinjam[index_baru - 1].id_peminjaman + 1;
+    }
+
+    strcpy(list_pinjam[index_baru].username, username);
+    strcpy(list_pinjam[index_baru].ocaid, cari_ocaid);
+    strcpy(list_pinjam[index_baru].tanggal_pinjam, tanggal);
+    strcpy(list_pinjam[index_baru].status, "DIPINJAM");
+
+    *jumlah_pinjam = *jumlah_pinjam + 1;
+    list_buku[posisi_buku].stok = list_buku[posisi_buku].stok - 1;
+
+    save_books("data/books.txt", list_buku, jumlah_buku);
+    save_peminjaman("data/peminjaman.txt", list_pinjam, *jumlah_pinjam);
+
+    printf("Berhasil meminjam buku '%s'! ID Peminjaman Anda: %u\n",
+           list_buku[posisi_buku].judul,
+           list_pinjam[index_baru].id_peminjaman);
+}
     }
