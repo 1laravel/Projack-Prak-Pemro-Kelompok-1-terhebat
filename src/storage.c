@@ -47,15 +47,15 @@ int load_books(const char *filename, Buku list_buku[], int max_data) {
 
     int i = 0;
     while (i < max_data) {
-        int hasil = fscanf(file, "%63s \"%127[^\"]\" \"%127[^\"]\" \"%127[^\"]\" %d %d %d",
+        int hasil = fscanf(file, "%63s \"%255[^\"]\" \"%127[^\"]\" %d %d %d",
                            list_buku[i].ocaid,
-                           list_buku[i].judul,
-                           list_buku[i].penulis,
-                           list_buku[i].penerbit,
-                           &list_buku[i].tahun,
+                           list_buku[i].title,
+                           list_buku[i].author,
+                           //list_buku[i].penerbit,
+                           &list_buku[i].year,
                            &list_buku[i].page_count,
                            &list_buku[i].stok);
-        if (hasil != 7) {
+        if (hasil != 6) {
             break;
         }
         if (list_buku[i].stok >= 0 && list_buku[i].page_count > 0) {
@@ -74,12 +74,11 @@ void save_books(const char *filename, const Buku list_buku[], int jumlah_buku) {
     }
 
     for (int i = 0; i < jumlah_buku; i++) {
-        fprintf(file, "%s \"%s\" \"%s\" \"%s\" %d %d %d\n",
+        fprintf(file, "%s \"%s\" \"%s\" %d %d %d\n",
                 list_buku[i].ocaid,
-                list_buku[i].judul,
-                list_buku[i].penulis,
-                list_buku[i].penerbit,
-                list_buku[i].tahun,
+                list_buku[i].title,
+                list_buku[i].author,
+                list_buku[i].year,
                 list_buku[i].page_count,
                 list_buku[i].stok);
     }

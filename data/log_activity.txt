@@ -5,3 +5,7 @@ admin | LOGIN | Berhasil masuk ke sistem
 admin | LOGIN | Berhasil masuk ke sistem
 admin | LOGIN | Berhasil masuk ke sistem
 admin | LOGIN | Berhasil masuk ke sistem
+admin | LOGIN | Berhasil masuk ke sistem
+admin | LOGIN | Berhasil masuk ke sistem
+jack | LOGIN | Berhasil masuk ke sistem
+diah | LOGIN | Berhasil masuk ke sistem
