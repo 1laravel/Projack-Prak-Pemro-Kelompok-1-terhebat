@@ -85,3 +85,22 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
 
     printf("Buku berhasil dikembalikan. Terima kasih!\n");
 }
+void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam, const char *username) {
+    printf("\n=== DAFTAR PEMINJAMAN ANDA (%s) ===\n", username);
+    int ada = 0;
+
+    for (int i = 0; i < jumlah_pinjam; i++) {
+        if (strcmp(list_pinjam[i].username, username) == 0) {
+            printf("ID Pinjam: %u | ID Buku (ocaid): %s | Tgl Pinjam: %s | Status: %s\n",
+                   list_pinjam[i].id_peminjaman,
+                   list_pinjam[i].ocaid,
+                   list_pinjam[i].tanggal_pinjam,
+                   list_pinjam[i].status);
+            ada = 1;
+        }
+    }
+
+    if (ada == 0) {
+        printf("Anda belum memiliki riwayat peminjaman.\n");
+    }
+}
