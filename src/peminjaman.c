@@ -51,4 +51,23 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
            list_buku[posisi_buku].judul,
            list_pinjam[index_baru].id_peminjaman);
 }
+void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username) {
+    unsigned int cari_id;
+    printf("Masukkan ID Peminjaman yang akan dikembalikan: ");
+    scanf("%u", &cari_id);
+
+    int posisi_pinjam = -1;
+    for (int i = 0; i < jumlah_pinjam; i++) {
+        if (list_pinjam[i].id_peminjaman == cari_id &&
+            strcmp(list_pinjam[i].username, username) == 0 &&
+            strcmp(list_pinjam[i].status, "DIPINJAM") == 0) {
+            posisi_pinjam = i;
+            break;
+        }
+    }
+
+    if (posisi_pinjam == -1) {
+        printf("Data peminjaman tidak ditemukan atau buku sudah dikembalikan.\n");
+        return;
+    }
     }
