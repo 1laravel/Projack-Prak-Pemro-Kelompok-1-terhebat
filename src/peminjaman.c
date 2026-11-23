@@ -104,3 +104,19 @@ void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam,
         printf("Anda belum memiliki riwayat peminjaman.\n");
     }
 }
+void laporan_transaksi_global(const Peminjaman list_pinjam[], int jumlah_pinjam) {
+    printf("\n=== LAPORAN TRANSAKSI PEMINJAMAN ===\n");
+    if (jumlah_pinjam == 0) {
+        printf("Belum ada transaksi peminjaman.\n");
+        return;
+    }
+
+    for (int i = 0; i < jumlah_pinjam; i++) {
+        printf("ID Pinjam: %u | User: %s | ID Buku (ocaid): %s | Tgl Pinjam: %s | Status: %s\n",
+               list_pinjam[i].id_peminjaman,
+               list_pinjam[i].username,
+               list_pinjam[i].ocaid,
+               list_pinjam[i].tanggal_pinjam,
+               list_pinjam[i].status);
+    }
+}
