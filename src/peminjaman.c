@@ -2,6 +2,7 @@
 #include <string.h>
 #include "peminjaman.h"
 #include "storage.h"
+#include "menu.h"
 
 void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[], int jumlah_buku, const char *username) {
     char cari_ocaid[64];
@@ -45,8 +46,8 @@ void pinjam_buku(Peminjaman list_pinjam[], int *jumlah_pinjam, Buku list_buku[],
     *jumlah_pinjam = *jumlah_pinjam + 1;
     list_buku[posisi_buku].stok = list_buku[posisi_buku].stok - 1;
 
-    save_books("data/books.txt", list_buku, jumlah_buku);
-    save_peminjaman("data/peminjaman.txt", list_pinjam, *jumlah_pinjam);
+    save_books(FILE_BUKU, list_buku, jumlah_buku);
+    save_peminjaman(FILE_PEMINJAMAN, list_pinjam, *jumlah_pinjam);
 
     printf("Berhasil meminjam buku '%s'! ID Peminjaman Anda: %u\n",
            list_buku[posisi_buku].title,
@@ -80,8 +81,8 @@ void kembalikan_buku(Peminjaman list_pinjam[], int jumlah_pinjam, Buku list_buku
         }
     }
 
-    save_books("data/books.txt", list_buku, jumlah_buku);
-    save_peminjaman("data/peminjaman.txt", list_pinjam, jumlah_pinjam);
+    save_books(FILE_BUKU, list_buku, jumlah_buku);
+    save_peminjaman(FILE_PEMINJAMAN, list_pinjam, jumlah_pinjam);
 
     printf("Buku berhasil dikembalikan. Terima kasih!\n");
 }
