@@ -102,13 +102,11 @@ Aplikasi manajemen perpustakaan berbasis **Command Line Interface (CLI)** yang d
 **Windows (MinGW):**
 ```powershell
 mingw32-make
-.\perpustakaan.exe
 ```
 
 **Linux / macOS:**
 ```bash
 make
-./perpustakaan
 ```
 
 ### 2. Compile Manual (Tanpa Makefile)

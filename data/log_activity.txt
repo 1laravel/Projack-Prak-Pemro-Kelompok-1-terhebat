@@ -26,3 +26,9 @@ diah | LOGIN | member
 diah | PINJAM_BUKU | fernwoodleaves00willrich
 diah | KEMBALI_BUKU | pengembalian buku
 diah | LOGOUT | -
+admin | LOGIN | admin
+admin | LOGOUT | -
+diah | LOGIN | member
+diah | PINJAM_BUKU | feastfullofsadch00chur
+diah | KEMBALI_BUKU | pengembalian buku
+diah | LOGOUT | -
