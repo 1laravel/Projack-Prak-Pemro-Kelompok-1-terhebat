@@ -113,18 +113,31 @@ static void muatData(void)
     if (tmp == NULL) {
         printf("[!] Memori tidak cukup untuk memuat data buku.\n");
     } else {
+        /* 1. Prioritas: muat dari file rapi (data/buku.txt) */
         n = load_books(FILE_BUKU, tmp, MAX_BUKU);
-        for (int i = 0; i < n; i++)
+
+        /* 2. Fallback: jika buku.txt belum ada/kosong, muat dari data mentah */
+        if (n == 0) {
+            n = load_books(FILE_BUKU_RAW, tmp, MAX_BUKU);
+        }
+        if (n == 0) {
+            n = load_books("data/books.txt", tmp, MAX_BUKU);
+        }
+
+        /* 3. Pindahkan data dari tmp ke katalog (bagian ini yang tadi kehapus) */
+        for (int i = 0; i < n; i++) {
             diterima += buku_tambah(&katalog, tmp[i]);
+        }
         free(tmp);
-        if (diterima < n)
+
+        if (diterima < n) {
             printf("[!] %d baris buku dilewati (ID ganda / data tidak valid).\n", n - diterima);
+        }
     }
 
     jumlahPinjam = load_peminjaman(FILE_PEMINJAMAN, daftarPinjam, MAX_PINJAM);
     printf("Data dimuat: %d buku, %d transaksi.\n", katalog.jumlah, jumlahPinjam);
 }
-
 static void simpanBuku(void)
 {
     save_books(FILE_BUKU, katalog.data, katalog.jumlah);
@@ -184,9 +197,25 @@ static void aksiLihatKatalog(int hanyaTersedia)
     KeySort  key;
     Urutan   urut;
 
+    if (katalog.jumlah == 0) {
+        printf("\nKatalog kosong. Pastikan file '%s' tersedia.\n", FILE_BUKU_RAW);
+        tungguEnter();
+        return;
+    }
+
     if (!pilihSorting(&algo, &key, &urut)) return;
     printf("\n");
-    katalog_tampil_terurut(&katalog, algo, key, urut, hanyaTersedia);
+
+    /* Urutkan katalog asli lalu simpan permanen ke data/buku.txt */
+    urutkan_katalog(&katalog, algo, key, urut);
+    simpanBuku();
+
+    if (hanyaTersedia)
+        buku_tampil_tersedia(&katalog);
+    else
+        buku_tampil_semua(&katalog);
+
+    printf("\n[OK] Hasil sorting berhasil disimpan ke '%s'.\n", FILE_BUKU);
     tungguEnter();
 }
 
@@ -383,6 +412,7 @@ static void menuAdmin(const char *username)
     int pilih;
 
     do {
+        clearScreen();
         printf("\n");
         garis();
         printf("   MENU ADMIN (Pustakawan) - %s\n", username);
@@ -412,6 +442,7 @@ static void menuUser(const char *username)
     int pilih;
 
     do {
+        clearScreen();
         printf("\n");
         garis();
         printf("   MENU MEMBER (Anggota) - %s\n", username);

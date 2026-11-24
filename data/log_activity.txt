@@ -1,11 +1,28 @@
-admin | LOGIN | Berhasil masuk ke sistem
-jack | LOGIN | Berhasil masuk ke sistem
-UNKNOWN | LOGIN_FAILED | Percobaan login gagal atau dibatalkan
-admin | LOGIN | Berhasil masuk ke sistem
-admin | LOGIN | Berhasil masuk ke sistem
-admin | LOGIN | Berhasil masuk ke sistem
-admin | LOGIN | Berhasil masuk ke sistem
-admin | LOGIN | Berhasil masuk ke sistem
-admin | LOGIN | Berhasil masuk ke sistem
-jack | LOGIN | Berhasil masuk ke sistem
-diah | LOGIN | Berhasil masuk ke sistem
+diah | LOGIN | member
+diah | PINJAM_BUKU | withbattlefleetc00mattrich
+diah | KEMBALI_BUKU | pengembalian buku
+diah | PINJAM_BUKU | withbattlefleetc00mattrich
+diah | KEMBALI_BUKU | pengembalian buku
+diah | LOGOUT | -
+faiza | LOGIN | member
+faiza | PINJAM_BUKU | withbattlefleetc00mattrich
+faiza | KEMBALI_BUKU | pengembalian buku
+faiza | PINJAM_BUKU | withbattlefleetc00mattrich
+faiza | KEMBALI_BUKU | pengembalian buku
+faiza | LOGOUT | -
+jack | LOGIN | admin
+jack | LOGOUT | -
+niswatul | LOGIN | member
+diah | LOGIN | member
+diah | PINJAM_BUKU | zirconiumitscomp00venarich
+diah | KEMBALI_BUKU | pengembalian buku
+diah | LOGOUT | -
+diah | LOGIN | member
+diah | PINJAM_BUKU | 100romancesofrea00hunt
+diah | LOGOUT | -
+admin | LOGIN | admin
+admin | LOGOUT | -
+diah | LOGIN | member
+diah | PINJAM_BUKU | fernwoodleaves00willrich
+diah | KEMBALI_BUKU | pengembalian buku
+diah | LOGOUT | -

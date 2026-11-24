@@ -70,15 +70,15 @@ int buku_update(Katalog *k, const char *ocaid, Buku baru) {
 }
 
 static void cetak_header(void) {
-    printf("%-4s %-22s %-34s %-22s %-6s %-6s %-5s\n",
+    printf("%-4s %-26s %-34s %-22s %-6s %-6s %-5s\n",
            "No", "ID (ocaid)", "Judul", "Pengarang",
            "Tahun", "Hal", "Stok");
-    printf("--------------------------------------------------------------"
+    printf("------------------------------------------------------------------"
            "-----------------------------------\n");
 }
 
 static void cetak_baris(int no, const Buku *b) {
-    printf("%-4d %-22.22s %-34.34s %-22.22s %-6d %-6d %-5d\n",
+    printf("%-4d %-26s %-34.34s %-22.22s %-6d %-6d %-5d\n",
            no, b->ocaid, b->title, b->author,
            b->year, b->page_count, b->stok);
 }

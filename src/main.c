@@ -1,25 +1,27 @@
 #include <stdio.h>
-#include <string.h>
 #include "../include/auth.h"
+#include "../include/menu.h"
 #include "../include/utils.h"
+
+static void clearInputBuffer(void) {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF) {
+    }
+}
 
 int main() {
     User currentUser;
 
-    if (promptLogin(&currentUser) == 0) {
+    int isLoginSuccess = promptLogin(&currentUser);
+    if (!isLoginSuccess) {
         logActivity("UNKNOWN", "LOGIN_FAILED", "Percobaan login gagal atau dibatalkan");
-        return 1; 
+        return 1;
     }
 
-    logActivity(currentUser.username, "LOGIN", "Berhasil masuk ke sistem");
-
+    clearInputBuffer();
     clearScreen();
 
-    if (strcmp(currentUser.role, "admin") == 0) {
-        printf("\n--> Membuka Menu Admin (Kelola & Sorting Buku)...\n");
-    } else {
-        printf("\n--> Membuka Menu Member (Pinjam & Cari Buku)...\n");
-    }
+    menuUtama(&currentUser);
 
     return 0;
 }
