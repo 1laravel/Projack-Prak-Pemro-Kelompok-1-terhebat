@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "../include/utils.h"
+
+#define TIMESTAMP_LEN    20
+#define TIMESTAMP_FORMAT "%Y-%m-%d %H:%M:%S"
+
+static void getCurrentTimestamp(char *buffer, size_t bufferSize) {
+    time_t currentTime = time(NULL);
+    struct tm *localTime = localtime(&currentTime);
+
+    if (localTime == NULL) {
+        snprintf(buffer, bufferSize, "UNKNOWN_TIME");
+        return;
+    }
+
+    strftime(buffer, bufferSize, TIMESTAMP_FORMAT, localTime);
+}
 
 void logActivity(const char *username, const char *action, const char *detail) {
     if (username == NULL || action == NULL || detail == NULL) {
@@ -14,7 +30,10 @@ void logActivity(const char *username, const char *action, const char *detail) {
         return;
     }
 
-    fprintf(logFile, "%s | %s | %s\n", username, action, detail);
+    char timestamp[TIMESTAMP_LEN];
+    getCurrentTimestamp(timestamp, sizeof(timestamp));
+
+    fprintf(logFile, "[%s] %s | %s | %s\n", timestamp, username, action, detail);
     fclose(logFile);
 }
 

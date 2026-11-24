@@ -32,3 +32,25 @@ diah | LOGIN | member
 diah | PINJAM_BUKU | feastfullofsadch00chur
 diah | KEMBALI_BUKU | pengembalian buku
 diah | LOGOUT | -
+[2026-11-24 23:41:00] admin | LOGIN | admin
+[2026-11-24 23:41:12] admin | LOGOUT | -
+[2026-11-24 23:41:25] faiza | LOGIN | member
+[2026-11-24 23:41:57] faiza | PINJAM_BUKU | koreamongolinvas00hent
+[2026-11-24 23:42:08] faiza | KEMBALI_BUKU | pengembalian buku
+[2026-11-24 23:42:26] faiza | PINJAM_BUKU | koreamongolinvas00hent
+[2026-11-24 23:44:34] faiza | KEMBALI_BUKU | pengembalian buku
+[2026-11-24 23:44:36] faiza | LOGOUT | -
+[2026-11-24 23:44:51] jack | LOGIN | admin
+[2026-11-24 23:45:17] jack | TAMBAH_BUKU | 12
+[2026-11-24 23:45:29] jack | LOGOUT | -
+[2026-11-24 23:46:26] diah | LOGIN | member
+[2026-11-24 23:46:42] diah | PINJAM_BUKU | 12
+[2026-11-24 23:46:51] diah | KEMBALI_BUKU | pengembalian buku
+[2026-11-24 23:47:06] diah | LOGOUT | -
+[2026-11-24 23:47:13] admin | LOGIN | admin
+[2026-11-24 23:47:19] admin | HAPUS_BUKU | 12
+[2026-11-24 23:50:21] admin | LOGOUT | -
+[2026-11-24 23:50:29] diah | LOGIN | member
+[2026-11-24 23:50:54] diah | PINJAM_BUKU | 100romancesofrea00hunt
+[2026-11-24 23:51:02] diah | KEMBALI_BUKU | pengembalian buku
+[2026-11-24 23:51:15] diah | LOGOUT | -

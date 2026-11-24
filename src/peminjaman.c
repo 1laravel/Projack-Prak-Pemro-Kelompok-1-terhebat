@@ -105,6 +105,30 @@ void lihat_peminjaman_pribadi(const Peminjaman list_pinjam[], int jumlah_pinjam,
         printf("Anda belum memiliki riwayat peminjaman.\n");
     }
 }
+void lihat_peminjaman_aktif(const Peminjaman list_pinjam[], int jumlah_pinjam, const char *username) {
+    int jumlahAktif = 0;
+
+    for (int i = 0; i < jumlah_pinjam; i++) {
+        int isUserMatch = (strcmp(list_pinjam[i].username, username) == 0);
+        int isDipinjam  = (strcmp(list_pinjam[i].status, "DIPINJAM") == 0);
+
+        if (isUserMatch && isDipinjam) {
+            if (jumlahAktif == 0) {
+                printf("\n=== BUKU YANG SEDANG DIPINJAM (%s) ===\n", username);
+            }
+            printf("ID Pinjam: %u | ID Buku (ocaid): %s | Tgl Pinjam: %s | Status: %s\n",
+                   list_pinjam[i].id_peminjaman,
+                   list_pinjam[i].ocaid,
+                   list_pinjam[i].tanggal_pinjam,
+                   list_pinjam[i].status);
+            jumlahAktif++;
+        }
+    }
+
+    if (jumlahAktif == 0) {
+        printf("Tidak ada buku yang dipinjam.\n");
+    }
+}
 void laporan_transaksi_global(const Peminjaman list_pinjam[], int jumlah_pinjam) {
     printf("\n=== LAPORAN TRANSAKSI PEMINJAMAN ===\n");
     if (jumlah_pinjam == 0) {

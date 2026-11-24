@@ -385,11 +385,12 @@ static void aksiKembalikan(const char *username)
 
     printf("\n--- KEMBALIKAN BUKU ---\n");
     if (sebelum == 0) {
-        printf("Anda tidak memiliki buku yang sedang dipinjam.\n");
+        printf("Tidak ada buku yang dipinjam.\n");
         tungguEnter();
         return;
     }
-    lihat_peminjaman_pribadi(daftarPinjam, jumlahPinjam, username);
+
+    lihat_peminjaman_aktif(daftarPinjam, jumlahPinjam, username);
     printf("\n");
     kembalikan_buku(daftarPinjam, jumlahPinjam, katalog.data, katalog.jumlah, username);
     bersihkanBuffer();
