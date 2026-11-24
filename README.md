@@ -132,4 +132,4 @@ gcc -Wall -Wextra -Iinclude src/*.c -o perpustakaan
 | `data/user.txt` | `username\|password\|role` | `admin\|admin123\|admin` |
 | `data/buku.txt` | `ocaid "title" "author" year page_count stok` | `worksofcharlesle01leve "The works..." "Lever..." 1872 692 5` |
 | `data/peminjaman.txt` | `id username ocaid tanggal status` | `1 diah goldenwestpoems00crabrich 19-11-2026 DIPINJAM` |
-| `data/log_activity.txt` | `username \| action \| detail` | `admin \| LOGIN \| admin` |
+| `data/log_activity.txt` | `username \| action \| detail` | `[2026-11-24 23:45:17] jack \| TAMBAH_BUKU \| 12` |
